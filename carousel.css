@@ -1,0 +1,249 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+.jersey-20-regular {
+    font-family: "Jersey 20", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    padding: 0 1rem;
+    margin: 0;
+    justify-items: center;
+}
+
+button {
+    background-color: transparent;
+    border-color: transparent;
+}
+ul {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 4vw;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+  
+}
+
+
+li {
+  list-style-type: none;
+  background-color: #883b6a;
+  padding: 0;
+  display: flex;
+  flex: 0 0 100%;
+  align-self: center;
+  border-radius: 10px;
+  padding: 1rem;
+
+}
+
+
+.carousel-img {
+    padding: 1rem;
+    max-width: 45vw;
+    max-height: 90vh;
+    background-color: #e7baff;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: center;
+    justify-self: center;
+    margin-right: 2.5vw;
+    
+}
+
+.carousel-img img {
+    max-width: 45vw;
+    height: 90vh;
+    aspect-ratio: initial;
+    object-fit: contain;
+    justify-content: center;
+}
+
+.carousel-text {
+    max-width: 45vw;
+    height:fit-content;
+    max-height: 90vh;
+    background-color: #e7baff;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: flex-start;
+    justify-self: right;
+    margin-left: 2.5vh;
+    padding: 1rem;
+    
+}
+
+body {
+    font-family: "Jersey 20";
+    color: #883b6a;
+}
+
+ul {
+    anchor-name: --my-carousel;
+    align-items: center;
+}
+
+ul::scroll-button(*) {
+    position: absolute;
+    position-anchor: --my-carousel;
+}
+
+ul::scroll-button(left) {
+    content: "◄" / "Previous";
+    right: calc(anchor(left));
+    bottom: calc(anchor(bottom) + 25%);
+}
+
+ul::scroll-button(right) {
+    content: "►" / "Next";
+    left: calc(anchor(right));
+    bottom: calc(anchor(bottom) + 25%); 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.carousel-wrapper {
+    /* padding: 2rem; */
+    margin: 0 0rem;
+    display: flex;
+    gap: 4vw;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 90vw;
+    height: 90vh;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    max-height: fit-content;
+    
+}
+/*
+ul {
+    anchor-name: --my-carousel;
+    align-items: center;
+}
+
+li {
+    flex: 0 0 90vw;
+    align-items: center;
+    max-height: max-content;
+    
+}
+
+ul::scroll-button(*) {
+    position: absolute;
+    position-anchor: --my-carousel;
+}
+
+/*ul::scroll-button(left) {
+    content: "◄" / "Previous";
+    right: calc(anchor(left));
+    bottom: calc(anchor(bottom) + 25%);
+}
+
+ul::scroll-button(right) {
+    content: "►" / "Next";
+    left: calc(anchor(right));
+    bottom: calc(anchor(bottom) + 25%); 
+} */
+/*
+.carousel-item {
+    color: black;
+    list-style-type: none;
+    padding: 1rem;
+    scroll-snap-align: center;
+    display: flex;
+    flex: 0 0 100;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background-color: #883b6a;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+
+.carousel-img img {
+    max-height: 100vh;
+    background-color: #e7baff;
+}
+
+.carousel-text {
+    display: block;
+    align-self: start;
+    justify-content: left;
+   
+    
+    padding: 1rem;
+    background-color: #e7baff;
+    border-radius: 10px;
+}
+
+.carousel-text h2,
+p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #883b6a;
+}
+
+.carousel-text h1 {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+    color: #883b6a;
+}
+
+ul::scroll-button(*) {
+    border: 0;
+    font-size: 2rem;
+    background: none;
+    color: black;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+ul::scroll-button(*):hover,
+ul::scroll-button(*):focus {
+    opacity: 1;
+}
+
+ul::scroll-button(*):active {
+    translate: 1px 1px;
+}
+
+ul::scroll-button(*):disabled {
+    opacity: 0.2;
+    cursor: unset;
+}

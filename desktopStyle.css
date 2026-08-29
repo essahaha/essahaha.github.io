@@ -6,13 +6,76 @@
     font-style: normal;
 }
 
+body {
+    font-family: "Jersey 20";
+    color:#883b6a;
+}
 .wrap {
     margin: 1rem;
 }
 
-p {
+.regular-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.sidebarbutton:hover {
+    background-color: #fff9dc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+ .filepicker-item {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 5px;
+    margin: inherit;
+    gap: 1rem;
+}
+
+ .filepicker-item:hover {
+    border:solid 5px #883b6a; 
+    animation-delay: 0.2s;
+    animation: pulse 2s infinite;
+    
+}
+@keyframes pulse {
+  0%,100% { border-color: #883b6a; }
+  33% { border-color: #e7baff; }
+  66% { border-color: #a74085; }
+}
+
+main.p {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.back-button {
+    background-color: transparent;
+    border-color: transparent;
+}
+.x-button {
+    background-color: transparent;
+    border-color: transparent;
+    align-items: flex-start;
+    justify-items: left;
+    max-width: 1rem;
+    z-index: 1000;
+}
+
+
+
+.titlebar img {
+    width: 3rem;
+    padding: 0;
     margin: 0;
-    padding:0;
 }
 
 html,
@@ -22,7 +85,7 @@ body {
     height: 100%;
     width: 100%;
     font-family: "Jersey 20";
-    color: white;
+    color: transparent;
     text-overflow: ellipsis;
     white-space: inherit;
 }
@@ -42,8 +105,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
-    border-bottom: 1px solid black;
+    padding: 0.2rem 1rem;
     background-color: #883b6a;
 
 }
@@ -58,12 +120,15 @@ body {
     padding: .5rem 0;
 }
 
+button:hover {
+    cursor: pointer;
+}
 .titlebar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid black;
+    padding: 0.2rem 1rem;
+    border-bottom: 2px solid #883b6a;
     color: #883b6a;
     background-color: #e7baff;
 }
@@ -174,11 +239,13 @@ body {
     color: #883b6a;
     row-gap: 4rem;
     margin: 0.5rem 0.3rem;
-
     padding: 0.2rem;
     border-radius: 0.2rem;
+}
 
-
+h2 {
+ margin-bottom: 0.2rem;
+ margin-top: 0.5rem;
 }
 
 .aboutmeinfo p {
@@ -192,24 +259,112 @@ body {
     justify-content: right;
 }
 
-carousel {
-    display: flex;
+/* carousel stuff */
 
+#carousel-overlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.carousel-wrapper {
-    width: 80vw;
-    height: fit-content;
-    padding: 2rem;
-    margin-left: 2.5rem;
+#carousel-overlay.open {
     display: flex;
-    gap: 4vw;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+}
+
+ul {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 4vw;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+}
+
+
+li {
+  list-style-type: none;
+  background-color: #883b6a;
+  padding: 0.5rem;
+  display: flex;
+  flex: 0 0 100%;
+  align-self: center;
+  border-radius: 10px;
+justify-content: space-around;
+}
+
+
+.carousel-img {
+    padding: 1rem;
+    max-width: 45vw;
+    max-height: 90vh;
+    background-color: #e7baff;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2.5vw;
+    
+}
+.carousel-secondary-img {
+    padding: 1rem 1rem;
+    max-width: 60vw;
+    max-height: 90vh;
+    background-color: #e7baff;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: flex-start;
+    
+    margin-left: 2.5vw;
+    
+}
+
+.carousel-secondary-img img {
+    max-width: 45vw;
+    max-height: 75vh;
+    aspect-ratio: initial;
+    object-fit: contain;
+    justify-content: center;
+    align-items: flex-start;
+}
+.carousel-img img {
+    max-width: 45vw;
+    height: 90vh;
+    aspect-ratio: initial;
+    object-fit: contain;
+    justify-content: center;
+}
+
+.carousel-text {
+    max-width: 45vw;
+    height:fit-content;
+    max-height: 90vh;
+    background-color: #e7baff;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: flex-start;
+    justify-content:space-around;
+    margin-left: 2.5vh;
+    padding: 1rem;
+    
+}
+
+body {
+    font-family: "Jersey 20";
+    color: #883b6a;
+    background-color: transparent;
 }
 
 ul {
     anchor-name: --my-carousel;
+    align-items: center;
 }
 
 ul::scroll-button(*) {
@@ -226,90 +381,5 @@ ul::scroll-button(left) {
 ul::scroll-button(right) {
     content: "►" / "Next";
     left: calc(anchor(right));
-    bottom: calc(anchor(bottom) + 25%);
-}
-
-.carousel-item {
-    color: black;
-    list-style-type: none;
-    padding: 1rem;
-    scroll-snap-align: center;
-    display: flex;
-    justify-content: space-around;
-    flex: 0 0 100%;
-    justify-self: center;
-    align-items: center;
-    background-color: #883b6a;
-    border-radius: 10px;
-    margin: 5px;
-    
-}
-
-.carousel-img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:auto;
-    padding: 1rem;
-    max-width: 45%;
-     background-color: #e7baff;
-     border-radius: 10px;
-    
-    
-}
-
-.carousel-img img {
-    object-fit: cover;
-    flex: 1 1 auto;
-    max-width: 100%;
-    background-color: #e7baff;
-}
-
-
-
-.carousel-text {
-    display: block;
-    align-self: flex-start;
-    justify-content: left;
-    height: auto;
-    width: 45%;
-    padding: 1rem;
-    background-color: #e7baff;
-    border-radius: 10px;
-}
-
-.carousel-text h2, p {
-margin-top: 0;
-margin-bottom: 0.5rem;
-color:#883b6a;
-}
-
-.carousel-text h1 {
-    margin-top: 0px;
-    margin-bottom: 1rem;
-    color:#883b6a;
-}
-
-
-ul::scroll-button(*) {
-    border: 0;
-    font-size: 2rem;
-    background: none;
-    color: black;
-    opacity: 0.7;
-    cursor: pointer;
-}
-
-ul::scroll-button(*):hover,
-ul::scroll-button(*):focus {
-    opacity: 1;
-}
-
-ul::scroll-button(*):active {
-    translate: 1px 1px;
-}
-
-ul::scroll-button(*):disabled {
-    opacity: 0.2;
-    cursor: unset;
-}
+    bottom: calc(anchor(bottom) + 25%); 
+} 
