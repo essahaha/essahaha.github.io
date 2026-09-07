@@ -302,8 +302,8 @@ a:hover {
     display: flex;
     flex-direction: row;
     flex-grow: 100%;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
     background-color: #fff9dc;
     color: #883b6a;
@@ -322,12 +322,21 @@ h2 {
     max-width: 100%;
     margin-left: 0.5rem;
     flex: 1 1 0;
-    padding: 0.05rem;
+    padding: 0.5rem;
+    font-size: larger;
+    border: 5px solid #883b6a;
+    border-radius: 5px;
 }
 
-.aboutmeinfo img {
-    justify-content: right;
+#selfie {
+    max-height: 75vh;
+    width: auto;
+    border-radius: 10px;
+    border: 5px outset #883b6a;
+    margin: 1rem;
 }
+
+
 
 /* carousel stuff */
 
@@ -462,6 +471,14 @@ ul::scroll-button(right) {
     left: calc(anchor(right));
     bottom: calc(anchor(bottom) + 50vh);
 }
+
+/* about me */
+
+
+
+
+
+
 /*
 ul::scroll-button(left) {
     content: "";
