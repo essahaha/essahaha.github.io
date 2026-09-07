@@ -6,10 +6,15 @@
     font-style: normal;
 }
 
+button {
+    font-family: inherit;
+}
+
 body {
     font-family: "Jersey 20";
-    color:#883b6a;
+    color: #883b6a;
 }
+
 .wrap {
     margin: 1rem;
 }
@@ -26,7 +31,8 @@ body {
     text-decoration: underline;
     cursor: pointer;
 }
- .filepicker-item {
+
+.filepicker-item {
     background-color: transparent;
     border-color: transparent;
     border-radius: 10px;
@@ -35,25 +41,54 @@ body {
     padding: 5px;
     margin: inherit;
     gap: 1rem;
+    border: solid 5px transparent;
 }
 
- .filepicker-item:hover {
-    border:solid 5px #883b6a; 
+.filepicker-item:hover {
+    border: solid 5px #883b6a;
     animation-delay: 0.2s;
     animation: pulse 2s infinite;
-    
 }
+
 @keyframes pulse {
-  0%,100% { border-color: #883b6a; }
-  33% { border-color: #e7baff; }
-  66% { border-color: #a74085; }
+
+    0%,
+    100% {
+        border-color: #883b6a;
+    }
+
+    33% {
+        border-color: #e7baff;
+    }
+
+    66% {
+        border-color: #a74085;
+    }
+}
+
+.tooltip {
+    display: none;
+    position: fixed;
+    top: 50vh;
+    right: 2vw;
+    align-items: bottom;
+    justify-content: right;
+    max-width: 10vw;
+    background-color: #e7baff;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.filepicker-item:hover+.tooltip {
+    display: block;
+    color: rebeccapurple;
 }
 
 main.p {
     margin: 0.5rem;
     padding: 0.5rem;
     white-space: nowrap;
-    overflow:hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -61,13 +96,22 @@ main.p {
     background-color: transparent;
     border-color: transparent;
 }
+
 .x-button {
     background-color: transparent;
     border-color: transparent;
-    align-items: flex-start;
-    justify-items: left;
-    max-width: 1rem;
+    top: 1px;
+    left: 1px;
     z-index: 1000;
+    position: absolute;
+}
+
+.x-button img {
+    max-width: 2vw;
+    padding: 0;
+    margin: 0;
+    justify-items: left;
+    display: block;
 }
 
 
@@ -123,6 +167,7 @@ body {
 button:hover {
     cursor: pointer;
 }
+
 .titlebar {
     display: flex;
     align-items: center;
@@ -141,6 +186,15 @@ button:hover {
     display: flex;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration-color: #883b6a;
+}
+
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -152,18 +206,29 @@ button:hover {
     background-color: #883b6a;
 }
 
+.sidebarbutton a {
+    display: inherit;
+    text-decoration: none;
+    display: inherit;
+    padding-right: 0.8rem;
+    margin-right: 0.8rem;
+    align-content: center;
+
+}
+
 .sidebarbutton {
     display: flex;
     flex-direction: row;
     background-color: #f9e095;
     align-content: center;
+    text-decoration: none;
 }
 
 .sidebarbutton p {
     color: #883b6a;
     width: 100%;
     margin-left: 0.2rem;
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
     align-content: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -180,7 +245,6 @@ button:hover {
 
 .filepicker {
     display: grid;
-    padding: .75rem 0;
     align-items: center;
     justify-items: center;
     width: 100%;
@@ -198,6 +262,7 @@ button:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 1rem;
 
 
 }
@@ -244,8 +309,8 @@ button:hover {
 }
 
 h2 {
- margin-bottom: 0.2rem;
- margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
 }
 
 .aboutmeinfo p {
@@ -261,9 +326,10 @@ h2 {
 
 /* carousel stuff */
 
-#carousel-overlay {
+#copy-carousel-overlay,
+#favourites-carousel-overlay, #other-carousel-overlay {
     display: none;
-    position:fixed;
+    position: fixed;
     inset: 0;
     z-index: 999;
     align-items: center;
@@ -272,32 +338,36 @@ h2 {
     background: rgba(0, 0, 0, 0.6);
 }
 
-#carousel-overlay.open {
+#copy-carousel-overlay.open,
+#favourites-carousel-overlay.open, #other-carousel-overlay.open {
     display: flex;
 }
 
-ul {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 4vw;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-snap-align: center;
+#carousel-wrapper {
+    width: 95vw;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: 10px;
+    position: relative;
+
 }
 
-
-li {
-  list-style-type: none;
-  background-color: #883b6a;
-  padding: 0.5rem;
-  display: flex;
-  flex: 0 0 100%;
-  align-self: center;
-  border-radius: 10px;
-justify-content: space-around;
+#carousel-wrapper li {
+    list-style-type: none;
+    background-color: #883b6a;
+    padding: 0.5rem;
+    display: flex;
+    margin: 0 2vw;
+    flex: 0 0 calc(100% - 2vw);
+    align-content: center;
+    border-radius: 10px;
+    justify-content: space-around;
+    scroll-snap-align: center;
 }
 
 
@@ -311,8 +381,9 @@ justify-content: space-around;
     align-items: center;
     justify-content: center;
     margin-right: 2.5vw;
-    
+
 }
+
 .carousel-secondary-img {
     padding: 1rem 1rem;
     max-width: 60vw;
@@ -321,9 +392,9 @@ justify-content: space-around;
     border-radius: 10px;
     object-fit: cover;
     align-items: flex-start;
-    
+
     margin-left: 2.5vw;
-    
+
 }
 
 .carousel-secondary-img img {
@@ -334,6 +405,7 @@ justify-content: space-around;
     justify-content: center;
     align-items: flex-start;
 }
+
 .carousel-img img {
     max-width: 45vw;
     height: 90vh;
@@ -344,16 +416,16 @@ justify-content: space-around;
 
 .carousel-text {
     max-width: 45vw;
-    height:fit-content;
+    height: fit-content;
     max-height: 90vh;
     background-color: #e7baff;
     border-radius: 10px;
     object-fit: cover;
     align-items: flex-start;
-    justify-content:space-around;
+    justify-content: space-around;
     margin-left: 2.5vh;
     padding: 1rem;
-    
+
 }
 
 body {
@@ -372,14 +444,40 @@ ul::scroll-button(*) {
     position-anchor: --my-carousel;
 }
 
+
+
 ul::scroll-button(left) {
     content: "◄" / "Previous";
-    right: calc(anchor(left));
-    bottom: calc(anchor(bottom) + 25%);
+    left: calc(anchor(left) - 2vw);
+    bottom: calc(anchor(bottom) + 50vh);
 }
 
 ul::scroll-button(right) {
     content: "►" / "Next";
     left: calc(anchor(right));
-    bottom: calc(anchor(bottom) + 25%); 
-} 
+    bottom: calc(anchor(left) + 50vh);
+}
+/*
+ul::scroll-button(left) {
+    content: "";
+    background-color: transparent;
+    border: none;
+    background: url("leftbutton.png") no-repeat 0 0;
+    background-size: 100%;
+    width: 6rem;
+    height: 6rem;
+    left: calc(anchor(left) - 4rem);
+}
+
+
+/*
+ul::scroll-button(right) {
+    content: "";
+    background-color: transparent;
+    border: none;
+    background: url("rightbutton.png") no-repeat 0 0;
+    background-size: 100%;
+    width: 6rem;
+    height: 6rem;
+    right: calc(anchor(right));
+}
