@@ -208,12 +208,13 @@ a:hover {
 
 .sidebarbutton a {
     display: inherit;
+    justify-content: start;
     text-decoration: none;
     display: inherit;
-    padding-right: 0.8rem;
-    margin-right: 0.8rem;
-    align-content: center;
-
+    all: unset;
+    /* padding-right: 0.8rem;
+    margin-left: 0.2rem;
+    margin-right: 0.8rem; */
 }
 
 .sidebarbutton {
@@ -222,17 +223,21 @@ a:hover {
     background-color: #f9e095;
     align-content: center;
     text-decoration: none;
+    width: 100%;
 }
 
 .sidebarbutton p {
     color: #883b6a;
-    width: 100%;
     margin-left: 0.2rem;
     margin-right: 1.5rem;
     align-content: center;
+    justify-content: start;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font: inherit;
+    font-size: medium;
+    padding: 0;
 }
 
 .sidebarbutton img {
@@ -455,7 +460,7 @@ ul::scroll-button(left) {
 ul::scroll-button(right) {
     content: "►" / "Next";
     left: calc(anchor(right));
-    bottom: calc(anchor(left) + 50vh);
+    bottom: calc(anchor(bottom) + 50vh);
 }
 /*
 ul::scroll-button(left) {
